@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'grass_cutting'
+    # 'django_extensions'
 ]
 
 MIDDLEWARE = [

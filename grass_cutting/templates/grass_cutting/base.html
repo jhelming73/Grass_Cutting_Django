@@ -1,0 +1,18 @@
+{% load static %}
+<html>
+
+<head>
+  <title>Grass_Cutting</title>
+  <link rel="stylesheet" href="{% static 'css/grass_cutting.css' %}" />
+</head>
+
+<body>
+  <h1>Grass_Cutting</h1>
+  <nav>
+    <a href="/fertilzers">Fertilizers</a>
+    <a href="/">Lawnmowers</a>
+  </nav>
+  {% block content %} {% endblock %}
+</body>
+
+</html>
