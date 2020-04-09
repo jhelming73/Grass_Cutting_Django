@@ -1,10 +1,10 @@
 {% extends 'grass_cutting/base.html' %} {% block content %}
 
-<h2>fertilizers <a href="">(+)</a></h2>
+<h2>fertilizers <a href="{% url 'fertilizer_create' %}">(+)</a></h2>
 <ul>
   {% for fertilizer in fertilizers %}
   <li>
-    <a href="">{{ fertilizer.name }}</a>
+    <a href="{% url 'fertilizer_detail' pk=fertilizer.pk %}">{{ fertilizer.product }}</a>
   </li>
   {% endfor %}
 </ul>

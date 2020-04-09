@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from .models import Lawnmower, Fertilizer
-from .forms import LawnmowerForm
+from .forms import LawnmowerForm, FertilizerForm
 # Create your views here.
 
 def lawnmower_list(request):
@@ -41,3 +41,33 @@ def lawnmower_delete(request, pk):
 def fertilizer_list(request):
     fertilizers = Fertilizer.objects.all()
     return render(request, 'grass_cutting/fertilizer_list.html', {'fertilizers': fertilizers})
+
+def fertilizer_detail(request, pk):
+    fertilizer = Fertilizer.objects.get(id=pk)
+
+    return render(request, 'grass_cutting/fertilizer_detail.html', {'fertilizer': fertilizer})
+
+def fertilizer_create(request):
+    if request.method == 'POST':
+        form = FertilizerForm(request.POST)
+        if form.is_valid():
+            fertilizer = form.save()
+            return redirect('fertilizer_detail', pk=fertilizer.pk)
+    else:
+        form = FertilizerForm()
+    return render(request, 'grass_cutting/fertilizer_form.html', {'form': form})
+
+def fertilizer_edit(request, pk):
+    fertilizer = Fertilizer.objects.get(pk=pk)
+    if request.method == "POST":
+        form = FertilizerForm(request.POST, instance=fertilizer)
+        if form.is_valid():
+            fertilizer = form.save()
+            return redirect('fertilizer_detail', pk=fertilizer.pk)
+    else:
+        form = FertilizerForm(instance=fertilizer)
+    return render(request, 'grass_cutting/fertilizer_form.html', {'form': form})
+
+def fertilizer_delete(request, pk):
+    Fertilizer.objects.get(id=pk).delete()
+    return redirect('fertilizer_list')
