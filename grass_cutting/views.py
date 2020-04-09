@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse
 from .models import Lawnmower, Fertilizer
 from .forms import LawnmowerForm, FertilizerForm
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def lawnmower_list(request):
@@ -38,15 +40,18 @@ def lawnmower_delete(request, pk):
     Lawnmower.objects.get(id=pk).delete()
     return redirect('lawnmower_list')
 
+@login_required
 def fertilizer_list(request):
     fertilizers = Fertilizer.objects.all()
     return render(request, 'grass_cutting/fertilizer_list.html', {'fertilizers': fertilizers})
 
+@login_required
 def fertilizer_detail(request, pk):
     fertilizer = Fertilizer.objects.get(id=pk)
 
     return render(request, 'grass_cutting/fertilizer_detail.html', {'fertilizer': fertilizer})
 
+@login_required
 def fertilizer_create(request):
     if request.method == 'POST':
         form = FertilizerForm(request.POST)
@@ -57,6 +62,7 @@ def fertilizer_create(request):
         form = FertilizerForm()
     return render(request, 'grass_cutting/fertilizer_form.html', {'form': form})
 
+@login_required
 def fertilizer_edit(request, pk):
     fertilizer = Fertilizer.objects.get(pk=pk)
     if request.method == "POST":
@@ -68,6 +74,7 @@ def fertilizer_edit(request, pk):
         form = FertilizerForm(instance=fertilizer)
     return render(request, 'grass_cutting/fertilizer_form.html', {'form': form})
 
+@login_required
 def fertilizer_delete(request, pk):
     Fertilizer.objects.get(id=pk).delete()
     return redirect('fertilizer_list')

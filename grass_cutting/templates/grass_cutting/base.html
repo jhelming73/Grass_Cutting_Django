@@ -11,6 +11,13 @@
   <nav>
     <a href="/fertilizers">Fertilizers</a>
     <a href="/">Lawnmowers</a>
+    <div class="user-info">
+        {% if user.is_authenticated %} Welcome, {{ user.username }}
+        <a href="{% url 'logout' %}">Log out</a>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Signup</a>
+        {% endif %}
   </nav>
   {% block content %} {% endblock %}
 </body>
