@@ -12,4 +12,4 @@ class FertilizerForm(forms.ModelForm):
     
     class Meta:
         model = Fertilizer
-        fields = ('product', 'description', 'preview_url',)
+        fields = ('lawnmower','product', 'description', 'preview_url',)

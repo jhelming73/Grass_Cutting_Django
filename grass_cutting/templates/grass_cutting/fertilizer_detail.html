@@ -1,19 +1,17 @@
 {% extends 'grass_cutting/base.html' %} {% block content %}
-<h2>{{ fertilizer.product }} <a href="{% url 'fertilizer_edit' pk=fertilizer.pk %}">(edit)</a></h2>
+<h2>Fertilizer</h2>
+<h3>{{ fertilizer.product }} </h3>
 <h4>{{ fertilizer.description }} </h4>
+<h4>{{ lawnmower.model }} </h4>
 
-<img src="{{ lawnmower.photo_url }}" alt="" class="lawnmower-photo" />
-
+<h2>
+  <a href="{% url 'fertilizer_edit' pk=fertilizer.pk %}">(Edit)</a>
+</h2>
 <div>
-    <a href="{% url 'lawnmower_delete' pk=lawnmower.pk %}">DELETE</a>
-  </div>
-  <h3>Fertilizer <a href="">(+)</a></h3>
-  <ul>
-    {% for fertilizer in lawnmower.fertilizer.all %}
-    <li>
-      <a href="">{{ fertilizer.name }}</a>
-      <img src="{{ fertilizer.preview_url }}" alt="" class="fertilizer-photo" />
-    </li>
-    {% endfor %}
-  </ul>
-  {% endblock %}
+    <a href="{% url 'fertilizer_delete' pk=fertilizer.pk %}">(Delete)</a>
+</div>
+
+
+<img src="{{ fertilizer.preview_url }}" alt="" class="lawnmower-photo"  />
+</ul>
+{% endblock %}

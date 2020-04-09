@@ -74,6 +74,10 @@ a.delete {
     width: 400px;
 }
 
+.lawnmower-photo {
+    width: 100px;
+}
+
 span.nationality {
     font-size: .5em;
 }
