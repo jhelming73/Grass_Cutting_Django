@@ -3,6 +3,8 @@ body {
     max-width: 50em;
     margin: auto;
     padding: 2em 1em;
+    background-image: url("./grass.jpeg");
+    background-size: cover; 
 }
 
 nav a {
@@ -70,17 +72,11 @@ a.delete {
     background-color: red;
 }
 
-.artist-photo {
-    width: 400px;
-}
 
 .lawnmower-photo {
-    width: 100px;
+    width: 300px;
 }
 
-span.nationality {
-    font-size: .5em;
-}
 
 .user-info {
     float: right;

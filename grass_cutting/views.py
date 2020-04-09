@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from .models import Lawnmower, Fertilizer
 from .forms import LawnmowerForm, FertilizerForm
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -78,3 +79,11 @@ def fertilizer_edit(request, pk):
 def fertilizer_delete(request, pk):
     Fertilizer.objects.get(id=pk).delete()
     return redirect('fertilizer_list')
+
+# def fertilizer_list(request):
+#     data = {
+#         'product': 'test',
+#         'preview_url': 'https://cdn.shopify.com/s/files/1/2045/8185/products/3720_384x384.jpg?v=1550868007',
+#         'description': 'test'
+#     }
+#     return JsonResponse(data)

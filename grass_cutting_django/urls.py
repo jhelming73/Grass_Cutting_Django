@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin', admin.site.urls),
     path('', include('grass_cutting.urls')),
     path('', include('accounts.urls')),
-    # path('api-auth', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth', include('rest_framework.urls', namespace='rest_framework'))
 ]

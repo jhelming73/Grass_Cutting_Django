@@ -10,11 +10,11 @@
   </div>
   <h3>Fertilizers </h3>
   <ul>
-    {% for fertilizer in lawnmower.fertilizer.all %}
+    {% for fertilizer in lawnmower.fertilizers.all %}
     <li>
       <a href="">{{ fertilizer.product }}</a>
       <img src="{{ fertilizer.preview_url }}" alt="" class="lawnmower-photo" />
     </li>
-    <!-- {% endfor %} -->
-  </ul>
+    {% endfor %}
+      </ul>
   {% endblock %}
